@@ -1,0 +1,33 @@
+span {
+    font-size: larger;
+
+}
+
+.page-header>div>a {
+    text-decoration: none;
+    color: var(--color-primary);
+    cursor: pointer;
+
+}
+
+.page-header>div>a:last-child {
+    color: var(--color-primary-dark);
+    font-weight: bold;
+}
+
+.page-header>div>a:first-child::before {
+    display: inline-block;
+    padding-right: 0.5rem;
+    color: rgb(108, 117, 125);
+    content: "";
+}
+
+
+
+
+.page-header>div>a::before {
+    display: inline-block;
+    padding-right: 0.5rem;
+    color: rgb(108, 117, 125);
+    content: "/";
+}

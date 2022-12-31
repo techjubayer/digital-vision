@@ -1,0 +1,195 @@
+@import "./style/MyBootstrap.css";
+
+
+
+:root {
+  --color-primary: hsl(239, 98%, 26%);
+  --color-primary-dark: hsl(239, 100%, 18%);
+  --color-primary-light: hsla(239, 98%, 26%, 0.5);
+
+  --color-secondary: hsl(165, 85%, 46%);
+  --color-secondary-dark: hsl(165, 100%, 18%);
+  --color-secondary-light: hsla(165, 85%, 46%, 0.5);
+
+  --color-gray: rgb(113, 113, 113);
+  --color-gray-dark: rgb(83, 83, 83);
+  --color-gray-light: rgba(113, 113, 113, 0.5);
+
+  --color-bg-light: rgb(248, 245, 245);
+  --color-bg-dark: rgb(83, 83, 83);
+  --color-white: #fff;
+  --color-dark: rgb(32, 32, 32);
+
+  --transition-duration: .6s;
+
+
+
+  --input-margin-bottom: 1.5rem;
+  --input-border-radius: 5px 0 5px 0;
+  --input-padding: 4px 10px 4px 28px;
+  --input-icon-padding-left: .3rem;
+
+
+  --font-size: 1rem;
+  --font-size-sm: .8rem;
+  --font-size-lg: 1.2rem;
+
+
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'Arial Rounded MT Bold';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Arial Rounded MT Bold'), url('https://fonts.cdnfonts.com/s/13381/ARLRDBD_0.woff') format('woff');
+}
+
+
+/* Commom Components ---------------STYLE START */
+.i-input-group {
+  position: relative;
+  margin-bottom: var(--input-margin-bottom);
+  border-bottom: 1px solid var(--color-primary);
+}
+
+.i-input-group.contact-us>span,
+.i-input-group.contact-us>label {
+  margin-left: var(--input-icon-padding-left);
+  transition: all 200ms ease-in;
+}
+
+.i-input-group>input,
+.i-input-group>textarea,
+.i-input-group.selection>select {
+  width: 100%;
+  font-size: var(--font-size-lg);
+  border: none;
+  color: var(--color-primary);
+  outline: none;
+  padding: var(--input-padding);
+  background: none;
+}
+
+.i-input-group.selection>select {
+  padding-left: 1.5rem;
+}
+
+.i-input-group>span {
+  position: absolute;
+  left: var(--input-icon-padding-left);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-primary);
+  cursor: pointer;
+  font-size: var(--font-size-lg);
+}
+
+.icon-right {
+  left: 90% !important;
+}
+
+.i-input-group>label {
+  margin: auto;
+  font-size: var(--font-size);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 2rem;
+  transition: all 200ms ease-in;
+  /* background-color: white; */
+  color: #0e406a;
+  cursor: text;
+
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.i-input-group>label:hover,
+.i-input-group>textarea:hover~label,
+.i-input-group>textarea:focus~label,
+.i-input-group>textarea:not(:placeholder-shown)~label,
+.i-input-group>input:hover~label,
+.i-input-group>input:focus~label,
+.i-input-group>input:not(:placeholder-shown)~label {
+  top: 0%;
+  left: var(--input-icon-padding-left);
+  font-size: var(--font-size-sm);
+  background-color: white;
+}
+
+.i-input-group>textarea:hover~span,
+.i-input-group>textarea:focus~span,
+.i-input-group>textarea:not(:placeholder-shown)~span {
+  top: 1rem;
+}
+
+
+.i-btn {
+  font-weight: bold;
+  padding: 2px 20px 2px 20px;
+  border: 1px solid rgba(0, 0, 0, 0.082);
+  box-shadow: 3px 2px 3px rgba(0, 0, 0, 0.500);
+  border-radius: var(--input-border-radius);
+  transition: all .2s ease-in;
+}
+
+.i-btn:hover {
+  background-color: unset;
+  color: var(--color-primary);
+}
+
+.i-btn-light {
+  color: var(--color-primary);
+  background-color: var(--color-white);
+}
+
+.i-btn-dark {
+  color: var(--color-bg-light);
+  background-color: var(--color-bg-dark);
+}
+
+.i-btn-primary {
+  color: var(--color-bg-light);
+  background-color: var(--color-primary);
+}
+
+@media only screen and (max-width: 768px) {
+  .form-container {
+    box-shadow: none !important;
+  }
+}
+
+/* Commom Components ---------------STYLE END */
+
+
+
+
+/* Scroll Track and Handle-------------------START */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px var(--color-gray-light);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary-light);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-dark);
+}
+
+/* Scroll Track and Handle-------------------END */

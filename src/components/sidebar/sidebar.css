@@ -1,0 +1,100 @@
+/* Sidebar Collaps -------------------START */
+
+.i-sidebar {
+    width: 18rem;
+    /* min-width: 220px; */
+    height: 100vh;
+    border-right: .5px solid var(--color-secondary-light);
+    transition: all var(--transition-duration);
+}
+
+
+
+.i-sidebar-header,
+.i-sidebar-footer {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.i-sidebar-header>span {
+    font-size: 22px;
+    display: none;
+}
+
+.i-sidebar-body {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.i-sidebar-body>a>div:first-child {
+    font-size: 20px;
+}
+
+.i-sidebar-header>h5,
+.i-sidebar-body>a>div:nth-child(2) {
+    transition: all var(--transition-duration);
+}
+
+.i-sidebar-body>a:hover,
+.i-sidebar-body>a.active {
+    border-right: 2px solid var(--color-primary-dark);
+    background-color: var(--color-primary-light);
+    color: white;
+}
+
+.i-sidebar-footer>div>label {
+    font-size: 12px;
+}
+
+
+/* Sidebar Collaps -------------------END */
+
+
+/* Sidebar Expand Active------------------- START*/
+.i-sidebar.active {
+    width: 5rem;
+    overflow: hidden;
+}
+
+.i-sidebar.active>.i-sidebar-header>h5,
+.i-sidebar.active>.i-sidebar-body>a>div:nth-child(2) {
+    opacity: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+/* Sidebar Expand Active------------------- END*/
+
+
+/* Sidebar For Mobile------------------- START*/
+@media only screen and (max-width: 768px) {
+
+    .i-sidebar {
+        width: 80%;
+        position: absolute;
+        z-index: 1000;
+        left: -80%;
+    }
+
+    .i-sidebar.active {
+        width: 80%;
+        left: 0%;
+    }
+
+    .i-sidebar-header>h5 {
+        margin-left: .5rem !important;
+    }
+
+    .i-sidebar.active>.i-sidebar-header>h5,
+    .i-sidebar.active>.i-sidebar-body>a>div:nth-child(2) {
+        opacity: 1;
+        width: 100%;
+        visibility: visible;
+    }
+
+    .i-sidebar-header>span {
+        display: block;
+    }
+}
+
+/* Sidebar For Mobile------------------- END*/
