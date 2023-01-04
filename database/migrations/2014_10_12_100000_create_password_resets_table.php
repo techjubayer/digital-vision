@@ -14,9 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('password_resets', function (Blueprint $table) {
-            $table->string('email')->primary();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
+            $table->smallIncrements("slNo");
+            $table->string('token', 150)->unique();
+            $table->string('phone', 15);
+            $table->string('otp', 6);
+            $table->string('status', 10)->default('PROCEED');
+            $table->string('rpt', 150)->default('dfs8i9e99goiwlkberw5her674wi6hel5r5j432kbdff')->comment('rpt-> Reset Password Token, This token use when user reset password after otp entered');
+            $table->smallInteger('otp_try', false, true)->default(0);
+            $table->smallInteger('otp_send', false, true)->default(0);
+            $table->timestamp('created_at');
         });
     }
 
