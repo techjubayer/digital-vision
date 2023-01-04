@@ -1,6 +1,7 @@
-# This Project created at Laravel
+# Digital Vision Seller App
 
-```
-// To make migration table
-~$ php artisan make:migration create_users_table
-```
+-   In this project seler can insert|update|delete there products|employs
+-   This project is created in laravel
+-   All the tables require for this project is defince on the /databases/migrations/...\*.php
+
+### This is a final Seller Admin Api App
