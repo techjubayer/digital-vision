@@ -33,11 +33,6 @@ export default function Sidebar(props) {
       name: "Api Details",
       icon: <MdApi />,
     },
-    {
-      path: "/login",
-      name: "Login",
-      icon: <MdApi />,
-    },
   ];
   const width = window.innerWidth;
   const hideSideBar = () => {

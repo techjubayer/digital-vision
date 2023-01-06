@@ -8,6 +8,7 @@ import Login from "./pages/auth/login/Login";
 import Signup from "./pages/auth/signup/Signup";
 import Reset from "./pages/auth/reset-pass/Reset";
 import Otp from "./pages/auth/otp-verify/Otp";
+import Dashboard from "./pages/dashboard/Dashboard";
 
 function App() {
   const [appTheme, setAppTheme] = useState("light");
@@ -37,12 +38,20 @@ function App() {
                 toggleSideBar={toggleSideBar}
               />
             }
-          ></Route>
-          <Route
-            path='/settings'
-            element={<AppSetting appTheme={appTheme} />}
-          ></Route>
-          <Route path='/apis' element={<Apis appTheme={appTheme} />}></Route>
+          >
+            <Route
+              index
+              element={
+                <Dashboard toggleSideBar={toggleSideBar} appTheme={appTheme} />
+              }
+            ></Route>
+            <Route
+              path='/settings'
+              element={<AppSetting appTheme={appTheme} />}
+            ></Route>
+            <Route path='/apis' element={<Apis appTheme={appTheme} />}></Route>
+          </Route>
+
           <Route path='/login' element={<Login />}></Route>
           <Route path='/register' element={<Signup />}></Route>
           <Route path='/reset' element={<Reset />}></Route>

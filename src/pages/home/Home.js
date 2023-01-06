@@ -1,21 +1,20 @@
 import React, { useEffect } from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
-import Dashboard from "../dashboard/Dashboard";
 import "./home.css";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 export default function Home(props) {
   const navigate = useNavigate();
   useEffect(() => {
-    let userToken = localStorage.getItem("token");
-    console.log(userToken);
-    if (!userToken) {
-      navigate("/login");
+    let userInfo = localStorage.getItem("user-info");
+    if (userInfo) {
+      const user = JSON.parse(userInfo);
+      console.log(user);
     } else {
-      navigate("/");
+      navigate("/login");
     }
-  }, []);
+  });
   const isSidebarShow = props.isSidebarShow;
   return (
     <>
@@ -31,10 +30,7 @@ export default function Home(props) {
             toggleSideBar={props.toggleSideBar}
             appTheme={props.appTheme}
           />
-          <Dashboard
-            toggleSideBar={props.toggleSideBar}
-            appTheme={props.appTheme}
-          />
+          <Outlet />
         </div>
       </div>
 

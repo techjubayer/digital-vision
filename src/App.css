@@ -168,6 +168,9 @@
   }
 }
 
+.alert.hide{
+  display: none;
+}
 /* Commom Components ---------------STYLE END */
 
 

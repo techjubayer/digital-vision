@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./login.css";
 import {
   MdLockOutline,
@@ -7,6 +7,7 @@ import {
   MdPermIdentity,
 } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import CryptoJS from "crypto-js";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -15,6 +16,9 @@ export default function Login() {
     showPassword: false,
   });
   const [emailPhone, setEmailPhone] = useState("");
+
+  const [alertDisplay, setAlertDisplay] = useState("hide");
+  const [alertMessage, setAlerMessage] = useState("");
   const togglePass = () => {
     setPassValues({
       password: passValues.password,
@@ -22,14 +26,47 @@ export default function Login() {
     });
   };
 
-  function submitLoginForm(e) {
+  async function submitLoginForm(e) {
     e.preventDefault();
-    const userEmPh = emailPhone;
-    const userPass = passValues.password;
-    localStorage.setItem("email", userEmPh);
-    localStorage.setItem("pass", userPass);
-    localStorage.setItem("token", userPass);
-    navigate("/");
+
+    let formData = {
+      ip: emailPhone,
+      password: CryptoJS.MD5(passValues.password).toString(),
+    };
+
+    console.table(formData);
+
+    let result = await fetch("http://127.0.0.1:8000/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    result = await result.json();
+
+    if (result["response"]) {
+      localStorage.setItem("user-info", JSON.stringify(result["user"]));
+      navigate("/");
+    } else {
+      showAlertDialog(result["message"]);
+    }
+  }
+
+  useEffect(() => {
+    if (localStorage.getItem("user-info")) {
+      navigate("/");
+    }
+  });
+
+  function showAlertDialog(message) {
+    setAlertDisplay("");
+    setAlerMessage(message);
+    setTimeout(() => {
+      setAlertDisplay("hide");
+    }, 3000);
   }
   return (
     <>
@@ -40,7 +77,7 @@ export default function Login() {
               <img
                 className='d-block m-auto'
                 src='https://cdni.iconscout.com/illustration/premium/thumb/digital-marketing-3678955-3092463.png'
-                alt='Login Image'
+                alt='Not found'
                 width='300px'
               />
             </div>
@@ -55,7 +92,7 @@ export default function Login() {
                     required
                     onChange={(e) => setEmailPhone(e.target.value)}
                   />
-                  <label>Enter email or phone</label>
+                  <label>Enter phone or user id</label>
                   <span>
                     <MdPermIdentity />
                   </span>
@@ -85,6 +122,14 @@ export default function Login() {
                     )}
                   </span>
                 </div>
+
+                <div
+                  className={`alert alert-danger ${alertDisplay} text-center`}
+                  role='alert'
+                >
+                  {alertMessage}
+                </div>
+
                 <button
                   id='btn_loginSubmit'
                   className='i-btn i-btn-primary w-100'
