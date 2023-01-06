@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Facade;
 
-return [
+// date_default_timezone_set('Asia/Kolkata');
 
+
+return [
     /*
     |--------------------------------------------------------------------------
     | Application Name
