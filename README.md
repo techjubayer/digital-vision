@@ -1,5 +1,5 @@
 ## React Seller App------
 
-This is the Seller Admin App
+- This is the Seller Admin App
 
-- https://github.com/techjubayer/digital-vision/tree/seller-react-app
+Download this app [Clone](https://github.com/techjubayer/digital-vision/tree/seller-react-app)
