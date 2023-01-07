@@ -9,6 +9,7 @@ import Signup from "./pages/auth/signup/Signup";
 import Reset from "./pages/auth/reset-pass/Reset";
 import Otp from "./pages/auth/otp-verify/Otp";
 import Dashboard from "./pages/dashboard/Dashboard";
+import Profile from "./pages/profile/Profile";
 
 function App() {
   const [appTheme, setAppTheme] = useState("light");
@@ -50,6 +51,9 @@ function App() {
               element={<AppSetting appTheme={appTheme} />}
             ></Route>
             <Route path='/apis' element={<Apis appTheme={appTheme} />}></Route>
+            <Route path='/profile' element={<Profile />}>
+              {/* <Route path='/profile/user1' element={<Profile />}></Route> */}
+            </Route>
           </Route>
 
           <Route path='/login' element={<Login />}></Route>

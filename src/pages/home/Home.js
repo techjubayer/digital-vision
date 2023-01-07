@@ -10,7 +10,7 @@ export default function Home(props) {
     let userInfo = localStorage.getItem("user-info");
     if (userInfo) {
       const user = JSON.parse(userInfo);
-      console.log(user);
+      // console.log(user);
     } else {
       navigate("/login");
     }

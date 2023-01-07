@@ -6,11 +6,13 @@ import {
   MdPermIdentity,
   MdApi,
   MdClose,
+  MdSupervisedUserCircle,
 } from "react-icons/md";
-import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export default function Sidebar(props) {
+  const navigate = useNavigate();
+
   let checked = props.appTheme === "dark" ? true : "";
   const sideMenu = [
     {
@@ -33,6 +35,11 @@ export default function Sidebar(props) {
       name: "Api Details",
       icon: <MdApi />,
     },
+    {
+      path: "/profile",
+      name: "Profile",
+      icon: <MdSupervisedUserCircle />,
+    },
   ];
   const width = window.innerWidth;
   const hideSideBar = () => {
@@ -42,6 +49,11 @@ export default function Sidebar(props) {
   };
 
   const isSidebarShow = props.isSidebarShow;
+
+  function logOut() {
+    localStorage.clear("user-info");
+    navigate("/login");
+  }
 
   return (
     <div
@@ -77,6 +89,12 @@ export default function Sidebar(props) {
           </NavLink>
         ))}
       </div>
+      <button
+        className='i-btn i-btn-primary w-75 m-auto d-block'
+        onClick={logOut}
+      >
+        Logout
+      </button>
       <div className='i-sidebar-footer mt-auto py-2 px-3'>
         <div className={`form-check form-switch text-white text-small`}>
           <label className='custom-control-label'>

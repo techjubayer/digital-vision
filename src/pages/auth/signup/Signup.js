@@ -142,6 +142,17 @@ export default function Signup() {
                 </div>
                 <div className='i-input-group'>
                   <input
+                    type='email'
+                    placeholder=' '
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <label>Enter email address</label>
+                  <span>
+                    <MdMailOutline />
+                  </span>
+                </div>
+                <div className='i-input-group'>
+                  <input
                     type='tel'
                     placeholder=' '
                     onChange={(e) => setPhone(e.target.value)}
@@ -153,17 +164,7 @@ export default function Signup() {
                     <MdOutlinePhone />
                   </span>
                 </div>
-                <div className='i-input-group'>
-                  <input
-                    type='email'
-                    placeholder=' '
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  <label>Enter email address</label>
-                  <span>
-                    <MdMailOutline />
-                  </span>
-                </div>
+
                 <div className='i-input-group'>
                   <input
                     type={passValues1.showPassword ? "text" : "password"}

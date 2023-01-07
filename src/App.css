@@ -58,6 +58,8 @@
   border-bottom: 1px solid var(--color-primary);
 }
 
+
+
 .i-input-group.contact-us>span,
 .i-input-group.contact-us>label {
   margin-left: var(--input-icon-padding-left);
@@ -103,7 +105,7 @@
   left: 2rem;
   transition: all 200ms ease-in;
   /* background-color: white; */
-  color: #0e406a;
+  color: var(--color-gray);
   cursor: text;
 
   -webkit-user-select: none;
@@ -131,6 +133,8 @@
 .i-input-group>textarea:not(:placeholder-shown)~span {
   top: 1rem;
 }
+
+
 
 
 .i-btn {
@@ -168,9 +172,10 @@
   }
 }
 
-.alert.hide{
+.alert.hide {
   display: none;
 }
+
 /* Commom Components ---------------STYLE END */
 
 

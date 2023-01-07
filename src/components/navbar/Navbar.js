@@ -1,8 +1,18 @@
 import { MdOutlineMenu, MdShoppingCart, MdSearch } from "react-icons/md";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import "./navbar.css";
 
 export default function Header(props) {
+  const location = useLocation();
+  const pathname = location.pathname;
+  const pathArray = pathname.split("/");
+  const currentPath = pathArray[pathArray.length - 1];
+
+  function firstLatterUpperCase(str) {
+    const lowerCase = str.toLowerCase();
+    return lowerCase[0].toUpperCase() + lowerCase.slice(1);
+  }
+
   return (
     <>
       <div
@@ -26,12 +36,17 @@ export default function Header(props) {
           </span>
         </div>
       </div>
-      <div className='page-header d-flex justify-content-between align-items-center p-2'>
-        <h3>Api details</h3>
+      <div className='page-header d-flex justify-content-between align-items-center p-2 border-bottom'>
+        <h3>
+          {currentPath == "" ? "Dashboard" : firstLatterUpperCase(currentPath)}
+        </h3>
         <div>
-          <NavLink className='p-1'>Home</NavLink>
-          <NavLink className='p-1'>Dashboard</NavLink>
-          <NavLink className='p-1'>Profit</NavLink>
+          {pathArray.map((pathname, key) => (
+            <NavLink to={pathname} key={key} className='p-1'>
+              {pathname == "" ? "Home" : firstLatterUpperCase(pathname)}
+            </NavLink>
+          ))}
+          {/* <NavLink className='p-1'>Profit</NavLink> */}
         </div>
       </div>
     </>
