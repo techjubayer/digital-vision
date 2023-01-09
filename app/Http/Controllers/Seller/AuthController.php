@@ -146,8 +146,6 @@ class AuthController extends Controller
         $responseArray = array();
         $responseArray['response'] = true;
         $responseArray['user'] = $request['user'];
-
-
         return json_encode($responseArray);
     }
 
@@ -162,13 +160,13 @@ class AuthController extends Controller
         $shopName = $request->input('shopName');
         $marketName = $request->input('marketName');
         $pinCode = $request->input('pinCode');
-        $adress = $request->input('adress');
+        $address = $request->input('address');
         $state = $request->input('state');
         $country = $request->input('country');
 
 
 
-        //Updatable Fields-------------------START
+        //Updatable Fields Checking-------------------START
         if ($email != null) {
             if (!DataValidation::emailValidate($email)) {
                 $responseArray['response'] = false;
@@ -191,8 +189,8 @@ class AuthController extends Controller
         if ($pinCode != null) {
             $user->pinCode = $pinCode;
         }
-        if ($adress != null) {
-            $user->adress = $adress;
+        if ($address != null) {
+            $user->address = $address;
         }
         if ($state != null) {
             $user->state = $state;
@@ -200,7 +198,7 @@ class AuthController extends Controller
         if ($country != null) {
             $user->country = $country;
         }
-        //Updatable Fields-------------------END
+        //Updatable Fields Checking-------------------END
 
         $userUpdate = $user->save();
 

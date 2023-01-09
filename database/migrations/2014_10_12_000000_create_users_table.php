@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('shopName', 30)->nullable();
             $table->string('marketName', 30)->nullable();
             $table->string('pinCode', 8)->nullable();
-            $table->string('adress', 200)->nullable();
+            $table->string('address', 200)->nullable();
             $table->string('state', 30)->nullable();
             $table->string('country', 30)->nullable();
             $table->string('token', 150)->default('dfs8i9e99goiwlkberw5her674wi6hel5r5j432kbdff');
