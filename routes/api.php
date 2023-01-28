@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post("/signup", [AuthController::class, "userSignUp"]);
 Route::post("/login", [AuthController::class, "userLogin"]);
+// Route::post("/genpass", [AuthController::class, "genFrontendPass"]);
 
 Route::group(['middleware' => ['userLoginCheck']], function () {
     Route::post("/userDetails", [AuthController::class, "getUserDetails"]);

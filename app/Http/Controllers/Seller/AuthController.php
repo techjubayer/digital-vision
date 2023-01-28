@@ -67,10 +67,10 @@ class AuthController extends Controller
         }
         // Checksum Check---------------END
 
-        $user->userId = DataValidation::userIdGen($phone);
+        $user->userId = DataValidation::genUserId($phone);
         $user->phone = $phone;
         $user->email = $email;
-        $user->password = DataValidation::hashPass($password);
+        $user->password = DataValidation::genHashPass($password);
         $user->name = $name;
         $user->token = DataValidation::gentoken($user->id);
 
@@ -97,7 +97,7 @@ class AuthController extends Controller
         $responseArray = array();
 
         $idPhone = $request->input('ip');
-        $password = DataValidation::hashPass($request->input('password'));
+        $password = DataValidation::genHashPass($request->input('password'));
         $cs = $request->input("cs");
 
         // Checksum Check---------------START
@@ -212,4 +212,11 @@ class AuthController extends Controller
         $responseArray['user'] = $user;
         return json_encode($responseArray);
     }
+
+    //Must remove genFrontendPass function ;
+    // function genFrontendPass(Request $request)
+    // {
+
+    //     return DataValidation::genFontendPass($request->input('pass'));
+    // }
 }

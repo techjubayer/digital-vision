@@ -49,7 +49,7 @@ class DataValidation
     }
 
     //user id genrate
-    public static function userIdGen($phone)
+    public static function genUserId($phone)
     {
         return hash('crc32', $phone);
     }
@@ -72,7 +72,7 @@ class DataValidation
 
 
     //password hashing alogo
-    public static function hashPass($pass)
+    public static function genHashPass($pass)
     {
         $md5 = hash('md5', $pass);
         $sha256 = hash('sha256', $md5);
