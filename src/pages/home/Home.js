@@ -12,7 +12,7 @@ export default function Home(props) {
       const user = JSON.parse(userInfo);
       // console.log(user);
     } else {
-      navigate("/login");
+      // navigate("/login");
     }
   });
   const isSidebarShow = props.isSidebarShow;
